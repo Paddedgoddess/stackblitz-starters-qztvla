@@ -18,6 +18,12 @@ const catFact = [
     {fact: "Cats have four legs", length: "21"}
 ];
 
+
+
+
+const catFactData = document.querySelector("#catFactData");
+console.log(catFactData)
+
 //Fetched catFact variable. Specifically nr.1. specifically the key fact.
 console.log(catFact[1].fact);
 
@@ -26,9 +32,24 @@ async function catFactGenerator() {
 
    const catFactData = await response.json();
 
-    console.log(catFactData.data[0].fact);
+   const randomIndex = Math.floor(Math.random() * 10);
+
+    const randomCatFact = catFactData.data[randomIndex].fact;
+
+    console.log(randomCatFact);
+
+    const catFactDisplay = document.querySelector("#catFactDisplay");
+    catFactDisplay.textContent = randomCatFact;
 };
-
-
+;
 
 catFactGenerator()
+
+
+const newFact = document.querySelector("#newFact")
+console.log(newFact)
+
+document.getElementById("newFact").addEventListener("click", function() {
+    // Reload the page
+    location.reload();
+});
